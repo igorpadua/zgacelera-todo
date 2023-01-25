@@ -49,6 +49,7 @@ public class Main {
                     break;
                 case 8:
                     // Modificar uma tarefa
+                    modifyTask(tasks);
                     break;
                 case 9:
                     // Remover uma tarefa
@@ -65,6 +66,7 @@ public class Main {
         }
         sc.close();
     }
+
     public static void menu() {
         System.out.println("1 - Adicionar uma nova tarefa");
         System.out.println("2 - Listar tarefas");
@@ -77,8 +79,6 @@ public class Main {
         System.out.println("9 - Remover uma tarefa");
         System.out.println("10 - Sair");
     }
-
-
 
     public static Task newTask() {
         Scanner sc = new Scanner(System.in);
@@ -98,10 +98,63 @@ public class Main {
 
         return new Task(tempNome, tempDesc, tempTerm, tempNivel, tempCate);
     }
+
+    public static void modifyTask(ArrayList<Task> tasks) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Digite o id da tarefa que você quer modificar: ");
+        int temp = sc.nextInt();
+
+        if (temp > tasks.size()) {
+            System.out.println("\nId incorreto!\n");
+            return;
+        }
+
+        System.out.println("Você quer modificar o nome da task(" + tasks.get(temp).getNome() + ")? (s ou n)");
+        String op = sc.next();
+        if (op.equals("s")) {
+            tasks.get(temp).setNome(sc.nextLine());
+            System.out.println("Modificado o nome com sucesso!");
+        }
+
+        System.out.println("Você quer modificar o descrição da task(" + tasks.get(temp).getDescricao() + ")? (s ou n)");
+        if (op.equals("s")) {
+            tasks.get(temp).setCategoria(sc.nextLine());
+            System.out.println("Modificado a descrição com sucesso!");
+        }
+
+        System.out.println("Você quer modificar o data de termino da task(" + FormatterDate.date_for_string(tasks.get(temp).getData_termino()) + ")? (s ou n)");
+        if (op.equals("s")) {
+            tasks.get(temp).setData_termino(FormatterDate.string_for_date(sc.next()));
+            System.out.println("Modificado a data com sucesso!");
+        }
+
+        System.out.println("Você quer modificar o nível de prioridade da task(" + tasks.get(temp).getNivel_prioridade() + ")? (s ou n)");
+        if (op.equals("s")) {
+            tasks.get(temp).setNivel_prioridade(sc.nextShort());
+            System.out.println("Modificado o nível de prioridade com sucesso!");
+        }
+
+        System.out.println("Você quer modificar a categoria da task(" + tasks.get(temp).getCategoria() + ")? (s ou n)");
+        if (op.equals("s")) {
+            tasks.get(temp).setCategoria(sc.nextLine());
+            System.out.println("Modificado a categoria com sucesso!");
+        }
+
+        System.out.println("Você quer modificar o status da task(" + tasks.get(temp).getStatus() + ")? (s ou n)");
+        if (op.equals("s")) {
+            tasks.get(temp).setStatus(sc.next());
+            System.out.println("Modificado o status com sucesso!");
+        }
+
+        System.out.println("\nTarefa modificada!\n");
+
+    }
+
     public static void deleteTask(ArrayList<Task> tasks) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Digite o id da tarefa: ");
+        System.out.print("Digite o id da tarefa que você quer remover: ");
         int temp = sc.nextInt();
 
         if (temp > tasks.size()) {
@@ -112,12 +165,11 @@ public class Main {
         System.out.println("Deseja realmente remover a task " + tasks.get(temp).getNome() + "? (s ou n)");
         String res = sc.next();
 
-        if (res.equals("s")) {
-            tasks.remove(temp);
-            System.out.println("\nTarefa removida!\n");
+        if (res.equals("n")) {
+            System.out.println("\nTarefa não removida!\n");
             return;
         }
-
-        System.out.println("\nTarefa não removida!\n");
+        tasks.remove(temp);
+        System.out.println("\nTarefa removida!\n");
     }
 }
