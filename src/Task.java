@@ -1,6 +1,8 @@
+import java.util.Comparator;
 import java.util.Date;
+import java.util.Objects;
 
-public class Task {
+public class Task implements Comparable<Task>, Comparator<Task> {
     private String nome;
     private String descricao;
     private Date data_termino;
@@ -25,6 +27,13 @@ public class Task {
                 ", Nivel prioridade=" + nivel_prioridade +
                 ", Categoria='" + categoria + '\'' +
                 ", Status='" + status + '\'';
+    }
+
+
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nivel_prioridade);
     }
 
     public String getNome() {
@@ -75,4 +84,18 @@ public class Task {
         this.status = status;
     }
 
+    @Override
+    public int compareTo(Task t1) {
+        if (this.nivel_prioridade < t1.nivel_prioridade) {
+            return -1;
+        } else  if (this.nivel_prioridade > t1.nivel_prioridade) {
+            return 1;
+        }
+        return 0;
+    }
+
+    @Override
+    public int compare(Task task, Task t1) {
+        return task.getCategoria().compareTo(t1.getCategoria());
+    }
 }

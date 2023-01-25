@@ -9,8 +9,9 @@ public class FormatterDate {
         try {
             term = formatter.parse(tempTerm);
         } catch (ParseException e) {
-            System.out.println("Data escrito de forma incorreta");
+            e.printStackTrace();
         }
+
         return term;
     }
 

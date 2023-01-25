@@ -1,12 +1,9 @@
-import java.util.Date;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class TasksLists {
     public static Task newTask() {
         Scanner sc = new Scanner(System.in);
 
-        // Criando uma nova Tarefa
         System.out.print("Digite o nome da tarefa: ");
         String tempNome = sc.nextLine();
         System.out.print("Digite uma descrição para a tarefa: ");
@@ -133,7 +130,29 @@ public class TasksLists {
                 "Existe " + done + " tarefa(s) já concluidas";
     }
 
-    public static void taskOrderPriority {
-        
+    public static void taskListCategoria(List<Task> tasks) {
+        if (tasks.size() == 0) {
+            System.out.println("\nNão existe tarefas!\n");
+            return;
+        }
+        Task task = new Task("qualquer", "sdjfk", FormatterDate.string_for_date("25/01/2023"), (short) 1, "nova");
+        Collections.sort(tasks, task);
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println(tasks.get(i));
+        }
+        System.out.println();
     }
+
+    public static void taskListPriority(List<Task> tasks) {
+        if (tasks.size() == 0) {
+            System.out.println("\nNão existe tarefas!\n");
+            return;
+        }
+        Collections.sort(tasks);
+        for (int i = 0; i < tasks.size(); ++i) {
+            System.out.println(i + " - " + tasks.get(i).toString());
+        }
+        System.out.println();
+    }
+
 }

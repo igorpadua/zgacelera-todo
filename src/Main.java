@@ -1,8 +1,5 @@
-import javax.xml.crypto.Data;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class Main {
@@ -23,43 +20,35 @@ public class Main {
                     // Criando uma nova tarefa
                     tasks.add(TasksLists.newTask());
                     System.out.println("\nTarefa adicionado com sucesso!\n");
+                    Collections.sort(tasks);
                     break;
                 case 2:
-                    // Listar tarefas
-                    if (tasks.size() == 0) {
-                        System.out.println("\nNão existe tarefas!\n");
-                        break;
-                    }
-                    for (int i = 0; i < tasks.size(); ++i) {
-                        System.out.println(i + " - " + tasks.get(i).toString());
-                    }
-                    System.out.println();
+                    // Listar tarefas por prioridade
+                    TasksLists.taskListPriority(tasks);
                     break;
                 case 3:
                     // Listar tarefas por categoria
+                    TasksLists.taskListCategoria(tasks);
                     break;
                 case 4:
-                    // Listar tarefa por prioridade
-                    break;
-                case 5:
                     // Listar tarefa por status
                     break;
-                case 6:
+                case 5:
                     // Listar tarefa por data de termino
                     break;
-                case 7:
+                case 6:
                     // Verificar número de tarefas concluidas, estão para fazer e sendo feitas
                     System.out.println(TasksLists.tasksTodoDoingDone(tasks));
                     break;
-                case 8:
+                case 7:
                     // Modificar uma tarefa
                     TasksLists.modifyTask(tasks);
                     break;
-                case 9:
+                case 8:
                     // Remover uma tarefa
                     TasksLists.deleteTask(tasks);
                     break;
-                case 10:
+                case 9:
                     // Sair do programa
                     System.out.println("Programa finalizado!");
                     end = false;
@@ -72,14 +61,13 @@ public class Main {
     }
     public static void menu() {
         System.out.println("1 - Adicionar uma nova tarefa");
-        System.out.println("2 - Listar tarefas");
+        System.out.println("2 - Listar tarefa por prioridade");
         System.out.println("3 - Listar tarefa por categoria");
-        System.out.println("4 - Listar tarefa por prioridade");
-        System.out.println("5 - Listar tarefa por status");
-        System.out.println("6 - Listar tarefa por data de termino");
-        System.out.println("7 - Verificar número de tarefas concluidas, estão para fazer e sendo feitas");
-        System.out.println("8 - Modificiar uma tarefa");
-        System.out.println("9 - Remover uma tarefa");
-        System.out.println("10 - Sair");
+        System.out.println("4 - Listar tarefa por status");
+        System.out.println("5 - Listar tarefa por data de termino");
+        System.out.println("6 - Verificar número de tarefas concluidas, estão para fazer e sendo feitas");
+        System.out.println("7 - Modificiar uma tarefa");
+        System.out.println("8 - Remover uma tarefa");
+        System.out.println("9 - Sair");
     }
 }
