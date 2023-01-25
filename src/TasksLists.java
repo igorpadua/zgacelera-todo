@@ -155,4 +155,22 @@ public class TasksLists {
         System.out.println();
     }
 
+    public static void taskListStatus(List<Task> tasks) {
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getStatus() == "ToDo") {
+                System.out.println(tasks.get(i));
+            }
+        }
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getStatus() == "Doing") {
+                System.out.println(tasks.get(i));
+            }
+        }
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getStatus() == "Done") {
+                System.out.println(tasks.get(i));
+            }
+        }
+    }
+
 }

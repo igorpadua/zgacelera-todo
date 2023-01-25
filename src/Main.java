@@ -32,6 +32,7 @@ public class Main {
                     break;
                 case 4:
                     // Listar tarefa por status
+                    TasksLists.taskListStatus(tasks);
                     break;
                 case 5:
                     // Listar tarefa por data de termino
