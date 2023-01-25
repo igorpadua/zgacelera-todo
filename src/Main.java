@@ -36,6 +36,7 @@ public class Main {
                     break;
                 case 5:
                     // Listar tarefa por data de termino
+                    TasksLists.taskListData(tasks);
                     break;
                 case 6:
                     // Verificar número de tarefas concluidas, estão para fazer e sendo feitas
@@ -43,10 +44,12 @@ public class Main {
                     break;
                 case 7:
                     // Modificar uma tarefa
+                    Collections.sort(tasks);
                     TasksLists.modifyTask(tasks);
                     break;
                 case 8:
                     // Remover uma tarefa
+                    Collections.sort(tasks);
                     TasksLists.deleteTask(tasks);
                     break;
                 case 9:

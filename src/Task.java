@@ -2,7 +2,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Objects;
 
-public class Task implements Comparable<Task>, Comparator<Task> {
+public class Task implements Comparable<Task> {
     private String nome;
     private String descricao;
     private Date data_termino;
@@ -28,8 +28,6 @@ public class Task implements Comparable<Task>, Comparator<Task> {
                 ", Categoria='" + categoria + '\'' +
                 ", Status='" + status + '\'';
     }
-
-
 
     @Override
     public int hashCode() {
@@ -94,8 +92,27 @@ public class Task implements Comparable<Task>, Comparator<Task> {
         return 0;
     }
 
+    public int compareCategoria(Task task, Task t1) {
+        return task.getCategoria().compareTo(t1.getCategoria());
+    }
+}
+class TaskCompareData implements Comparator<Task> {
+    @Override
+    public int compare(Task task, Task t1) {
+        return task.getData_termino().compareTo(t1.getData_termino());
+    }
+}
+
+class TaskCompareCategoria implements Comparator<Task> {
     @Override
     public int compare(Task task, Task t1) {
         return task.getCategoria().compareTo(t1.getCategoria());
+    }
+}
+
+class TaskCompareStatus implements Comparator<Task> {
+    @Override
+    public int compare(Task task, Task t1) {
+        return task.getStatus().compareTo(t1.getStatus());
     }
 }

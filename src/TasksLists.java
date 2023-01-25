@@ -85,8 +85,6 @@ public class TasksLists {
             System.out.println("Modificado o status com sucesso!");
         }
 
-        System.out.println("\nTarefa modificada!\n");
-
     }
 
     public static void deleteTask(List<Task> tasks) {
@@ -112,6 +110,10 @@ public class TasksLists {
     }
 
     public static String tasksTodoDoingDone(List<Task> tasks) {
+        if (tasks.isEmpty()) {
+            return "\nNão existe tarefas!\n";
+        }
+
         int toDo = 0;
         int doing = 0;
         int done = 0;
@@ -131,12 +133,11 @@ public class TasksLists {
     }
 
     public static void taskListCategoria(List<Task> tasks) {
-        if (tasks.size() == 0) {
+        if (tasks.isEmpty()) {
             System.out.println("\nNão existe tarefas!\n");
             return;
         }
-        Task task = new Task("qualquer", "sdjfk", FormatterDate.string_for_date("25/01/2023"), (short) 1, "nova");
-        Collections.sort(tasks, task);
+        Collections.sort(tasks, new TaskCompareCategoria());
         for (int i = 0; i < tasks.size(); i++) {
             System.out.println(tasks.get(i));
         }
@@ -156,21 +157,31 @@ public class TasksLists {
     }
 
     public static void taskListStatus(List<Task> tasks) {
-        for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getStatus() == "ToDo") {
-                System.out.println(tasks.get(i));
-            }
+
+        if (tasks.isEmpty()) {
+            System.out.println("\nNão existe tarefas!\n");
+            return;
         }
+        Collections.sort(tasks, new TaskCompareStatus());
         for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getStatus() == "Doing") {
-                System.out.println(tasks.get(i));
-            }
+            System.out.println(tasks.get(i));
         }
+
+        System.out.println();
+    }
+
+    public static void taskListData(List<Task> tasks) {
+        if (tasks.isEmpty()) {
+            System.out.println("\nNão existe tarefas!\n");
+            return;
+        }
+
+        Collections.sort(tasks, new TaskCompareData());
+
         for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getStatus() == "Done") {
-                System.out.println(tasks.get(i));
-            }
+            System.out.println(tasks.get(i));
         }
+        System.out.println();
     }
 
 }
