@@ -17,6 +17,16 @@ public class Task {
         this.status = "ToDo";
     }
 
+    @Override
+    public String toString() {
+        return  "Nome='" + nome + '\'' +
+                ", Descricao='" + descricao + '\'' +
+                ", Data termino=" + FormatterDate.date_for_string(data_termino) +
+                ", Nivel prioridade=" + nivel_prioridade +
+                ", Categoria='" + categoria + '\'' +
+                ", Status='" + status + '\'';
+    }
+
     public String getNome() {
         return nome;
     }
