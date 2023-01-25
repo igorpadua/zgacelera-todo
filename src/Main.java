@@ -9,6 +9,7 @@ public class Main {
         Boolean end = true;
         ArrayList<Task> tasks = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
+        TasksTxt.readTasks(tasks);
 
         menu();
 

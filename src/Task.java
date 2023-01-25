@@ -10,13 +10,13 @@ public class Task implements Comparable<Task> {
     private String categoria;
     private String status;
 
-    public Task(String nome, String descricao, Date data_termino, short nivel_prioridade, String categoria) {
+    public Task(String nome, String descricao, Date data_termino, short nivel_prioridade, String categoria, String status) {
         this.nome = nome;
         this.descricao = descricao;
         this.data_termino = data_termino;
         this.nivel_prioridade = nivel_prioridade;
         this.categoria = categoria;
-        this.status = "ToDo";
+        this.status = status;
     }
 
     @Override

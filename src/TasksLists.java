@@ -16,7 +16,7 @@ public class TasksLists {
         System.out.print("Digite uma categoria: ");
         String tempCate = sc.next();
 
-        return new Task(tempNome, tempDesc, tempTerm, tempNivel, tempCate);
+        return new Task(tempNome, tempDesc, tempTerm, tempNivel, tempCate, "ToDo");
     }
 
     public static void modifyTask(List<Task> tasks) {
