@@ -22,4 +22,22 @@ public class TasksTxt {
             throw new RuntimeException(e);
         }
     }
+
+    public static void writeTasks(List<Task> tasks) {
+
+        try (FileWriter fileWriter = new FileWriter("./src/myTasks.txt");
+             PrintWriter printWrite = new PrintWriter(fileWriter)) {
+
+            for (int i = 0; i < tasks.size(); i++) {
+                printWrite.println(tasks.get(i).getNome() + ";"
+                + tasks.get(i).getDescricao() + ";"
+                + FormatterDate.date_for_string(tasks.get(i).getData_termino()) + ";"
+                + tasks.get(i).getNivel_prioridade() + ";"
+                + tasks.get(i).getCategoria() + ";"
+                + tasks.get(i).getStatus() + ";");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

@@ -56,6 +56,7 @@ public class Main {
                 case 9:
                     // Sair do programa
                     System.out.println("Programa finalizado!");
+                    TasksTxt.writeTasks(tasks);
                     end = false;
                     break;
                 default:
