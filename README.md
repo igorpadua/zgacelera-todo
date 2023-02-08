@@ -17,6 +17,13 @@ Intellij Idea:
 
 # Tecnologias presente
 
+* Html
+* JavaScrip
+* CSS
+* Java
+
+# Funcionalidades
+
 1. Ordernar por status, prioridade, categoria e data de termino
 2. Persistencia de dados com txt
 3. Adicionar/modifica/remover
