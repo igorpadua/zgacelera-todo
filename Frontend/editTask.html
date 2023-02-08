@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<title>Editar Task</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+	</head>
+	<body>
+		<header>
+			<a href="index.html"><< Voltar</a>
+			<h1 class="titulo">Editar Tarefa</h1>
+		</header>
+		<div>
+			<label id="idLabel">Digite o id: </label>
+			<input type="number" id="idTask">
+		</div>
+		<button id="btnEdit" class="botao" type="submit">Editar</button>
+		<form class="grupo" id="form-esconder" style="display: none;">
+			<div class="campo">
+				<label for="nome">Nome da tarefa: </label>
+				<input id="taskName" type="text" name="nome-tarefa" placeholder="Nome da Tarefa">
+			</div>
+			<div class="campo">
+				<label for="descricao">Descrição da tarefa: </label>
+				<textarea id="taskDescription" rows="6" style="width: 26em" id="descricao-tarefa" name="descricao-tarefa"></textarea>
+			</div>
+			<div class="campo">
+				<label for="data-termino">Data de termino da tarefa: </label>
+				<input id="taskDate" type="date" name="data-termino-tarefa" placeholder="Data termino">
+			</div>
+			<div class="campo">
+				<label for="prioridade-task">Nível de prioridade da tarefa: </label>
+				<input id="taskPrio" type="number" min="1" max="5" name="prioridade-tarefa" placeholder="Prioridade da tarefa">
+			</div>
+			<div class="campo">
+				<label for="categoria-task">Categoria da tarefa: </label>
+				<input id="taskCategoria" type="text" name="categoria-task" placeholder="Categoria da tarefa">
+			</div>
+
+			<div>
+				<label for="status-tarefa">Status da tarefa: </label>
+				<form>
+					<select id="statusTarefa">
+						<option selected disabled value="">Selecione</option>
+						<option value="1">A fazer</option>
+						<option value="2">Em andamento</option>
+						<option value="3">Concluída</option>
+					</select>
+				</form>
+			</div>
+
+			<button id="taskSubmit" class="botao" type="submit" style="display: none;">Editar</button>
+		</form>
+		<script type="module" src="js/editTask.js"></script>
+	</body>
+</html>
