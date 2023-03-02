@@ -1,22 +1,28 @@
 let taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
 
+function criaTabelaTask(task, i) {
+	let lista = "<tr>"
+	lista +=    "<td>" + i + "</td>"
+	lista += 		"<td>" + task.name + "</td>"
+	lista += 		"<td>" + task.description + "</td>"
+	lista += 		"<td>" + task.date + "</td>"
+	lista += 		"<td>" + task.priority + "</td>"
+	lista += 		"<td>" + task.categoria + "</td>"
+	lista += 		"<td>" + task.status + "</td>"
+	lista += "</tr>"
+
+	return lista
+}
+
 // Lista todas as tarefas
 function listTasks() {
-	if (taskList.length == 0) {
+	if (taskList.length === 0) {
 		alert("Nenhuma tarefa cadastrada!");
 		return ""
 	}
 	let lista = "<tr><th>Id</th><th>Nome</th><th>Descrição</th><th>Data</th><th>Prioridade</th><th>Categoria</th><th>Status</th></tr>"
-	for (var i = 0; i < taskList.length; i++) {
-		lista += "<tr>"
-		lista +=    "<td>" + i + "</td>"
-		lista += 		"<td>" + taskList[i].name + "</td>"
-		lista += 		"<td>" + taskList[i].description + "</td>"
-		lista += 		"<td>" + taskList[i].date + "</td>"
-		lista += 		"<td>" + taskList[i].priority + "</td>"
-		lista += 		"<td>" + taskList[i].categoria + "</td>"
-		lista += 		"<td>" + taskList[i].status + "</td>"
-		lista += "</tr>"
+	for (let i = 0; i < taskList.length; i++) {
+		lista += criaTabelaTask(taskList[i], i)
 	}
 
 		return lista;
@@ -28,22 +34,14 @@ document.getElementById("listarTask").innerHTML = listTasks();
 function odernarStatus(status) {
 
 	let lista = ""
-	if (taskList.length == 0) {
+	if (taskList.length === 0) {
 		alert("Nenhuma tarefa cadastrada!");
 		return
 	}
 	lista = "<tr><th>Id</th><th>Nome</th><th>Descrição</th><th>Data</th><th>Prioridade</th><th>Categoria</th><th>Status</th></tr>"
-	for (var i = 0; i < taskList.length; i++) {
-		if (taskList[i].status == status) {
-			lista += "<tr>"
-			lista +=    "<td>" + i + "</td>"
-			lista += 		"<td>" + taskList[i].name + "</td>"
-			lista += 		"<td>" + taskList[i].description + "</td>"
-			lista += 		"<td>" + taskList[i].date + "</td>"
-			lista += 		"<td>" + taskList[i].priority + "</td>"
-			lista += 		"<td>" + taskList[i].categoria + "</td>"
-			lista += 		"<td>" + taskList[i].status + "</td>"
-			lista += "</tr>"
+	for (let i = 0; i < taskList.length; i++) {
+		if (taskList[i].status === status) {
+			lista += criaTabelaTask(taskList[i], i)
 		}
 	}
 	document.getElementById("listarTask").innerHTML = lista;

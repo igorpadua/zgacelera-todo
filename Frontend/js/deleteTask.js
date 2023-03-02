@@ -1,4 +1,4 @@
-var taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];;
+const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
 
 function deleteTask(index) {
 	taskList.splice(index, 1);
@@ -8,14 +8,14 @@ function deleteTask(index) {
 
 document.getElementById("btnDelete").onclick = function() {
 
-	if (taskList.length == 0) {
+	if (taskList.length === 0) {
 		alert("Não há tarefas cadastradas!");
 		return;
 	}
 
 	const input = document.getElementById("idTask");
 
-	if (input.value == "") {
+	if (input.value === "") {
 		alert("Informe o ID da tarefa que deseja deletar!");
 		return
 	}

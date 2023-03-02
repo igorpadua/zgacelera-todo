@@ -1,18 +1,18 @@
-import { Task } from "./task.js";
+import {criaTask} from "./criaTask";
 
-var taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
+const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
 const input = document.getElementById("idTask");
 
 document.getElementById("btnEdit").onclick = function() {
 	document.getElementById("idLabel").style.display = "none";
 	document.getElementById("idTask").style.display = "none";
 	document.getElementById("btnEdit").style.display = "none";
-	if (taskList.length == 0) {
+	if (taskList.length === 0) {
 		alert("Não há tarefas cadastradas!");
 		return;
 	}
 
-	if (input.value == "") {
+	if (input.value === "") {
 		alert("Informe o ID da tarefa que deseja editar!");
 		return
 	}
@@ -39,7 +39,7 @@ document.getElementById("btnEdit").onclick = function() {
 	// Selecionando o status da tarefa
 	const taskStatus = document.getElementById("statusTarefa");
 	for (let i = 0; i < taskStatus.options.length; i++) {
-		if (taskStatus.options[i].innerHTML == task.status) {
+		if (taskStatus.options[i].innerHTML === task.status) {
 			document.getElementById("statusTarefa").selectedIndex = i;
 			break;
 		}
@@ -48,22 +48,9 @@ document.getElementById("btnEdit").onclick = function() {
 
 document.getElementById("taskSubmit").onclick = function() {
 	console.log("Edit task");
-	const taskName = document.getElementById("taskName").value;
-	const taskDescription = document.getElementById("taskDescription").value;
-	const taskDate = document.getElementById("taskDate").value;
-	let dataTemp = new Date(taskDate);
-	dataTemp.setDate(dataTemp.getDate() + 1);
-	const taskPriorty = document.getElementById("taskPrio").value;
-	const taskCategoria = document.getElementById("taskCategoria").value;
-	// Select box status tarefa
-	const taskStatus = document.getElementById("statusTarefa");
-	const index = taskStatus.options.selectedIndex;
-	const taskStatusValue = taskStatus.options[index].innerHTML;
-
-	// Criar um novo objeto tarefa
-	const task = new Task(taskName, taskDescription, dataTemp.toLocaleString().substring(0, 10), taskPriorty, taskCategoria, taskStatusValue);
+	let task = criaTask()
 	// Adicionar a tarefa à lista de tarefas
-	if (!(taskName && taskDescription && taskDate && taskPriorty && taskCategoria && taskStatusValue != "Selecione")) {
+	if (!(task.name && task.description && task.date && task.priority && task.categoria && task.status !== "Selecione")) {
 		alert("Preencha todos os campos!");
 		return;
 	}
