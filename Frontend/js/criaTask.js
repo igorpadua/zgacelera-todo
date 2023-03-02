@@ -1,6 +1,6 @@
-import {Task} from "./task";
+import {Task} from "./task.js";
 
-export function criaTask() {
+function criaTask() {
 
     const taskName = document.getElementById("taskName").value;
     const taskDescription = document.getElementById("taskDescription").value;
@@ -16,3 +16,5 @@ export function criaTask() {
     // Criar um novo objeto tarefa
     return new Task(taskName, taskDescription, dataTemp.toLocaleString().substring(0, 10), taskPriorty, taskCategoria, taskStatusValue);
 }
+
+export { criaTask };

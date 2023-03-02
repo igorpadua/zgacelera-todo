@@ -1,4 +1,4 @@
-import {criaTask} from "./criaTask";
+import {criaTask} from "./criaTask.js";
 
 const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
 const input = document.getElementById("idTask");
@@ -7,6 +7,9 @@ document.getElementById("btnEdit").onclick = function() {
 	document.getElementById("idLabel").style.display = "none";
 	document.getElementById("idTask").style.display = "none";
 	document.getElementById("btnEdit").style.display = "none";
+
+	console.log(input)
+
 	if (taskList.length === 0) {
 		alert("Não há tarefas cadastradas!");
 		return;
@@ -48,7 +51,7 @@ document.getElementById("btnEdit").onclick = function() {
 
 document.getElementById("taskSubmit").onclick = function() {
 	console.log("Edit task");
-	let task = criaTask()
+	const task = criaTask()
 	// Adicionar a tarefa à lista de tarefas
 	if (!(task.name && task.description && task.date && task.priority && task.categoria && task.status !== "Selecione")) {
 		alert("Preencha todos os campos!");

@@ -1,4 +1,4 @@
-import {criaTask} from "./criaTask";
+import {criaTask} from "./criaTask.js";
 
 const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
 
