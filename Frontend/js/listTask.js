@@ -60,7 +60,7 @@ document.getElementById("filter-doing").onclick = function() {
 
 // Ordernar por done
 document.getElementById("filter-done").onclick = function() {
-	odernarStatus("Concluido");
+	odernarStatus("Concluída");
 }
 
 // Ordernar por todas

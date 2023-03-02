@@ -7,7 +7,6 @@ function deleteTask(index) {
 }
 
 document.getElementById("btnDelete").onclick = function() {
-	console.log("Delete task");
 
 	if (taskList.length == 0) {
 		alert("Não há tarefas cadastradas!");
