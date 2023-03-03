@@ -1,5 +1,6 @@
-import java.util.*;
+package com.igor.todolist;
 
+import java.util.*;
 public class TasksLists {
     public static Task newTask() {
         Scanner sc = new Scanner(System.in);
@@ -118,10 +119,10 @@ public class TasksLists {
         int doing = 0;
         int done = 0;
 
-        for (int i = 0; i < tasks.size(); i++) {
-            if (tasks.get(i).getStatus().equals("ToDo")) {
+        for (Task task : tasks) {
+            if (task.getStatus().equals("ToDo")) {
                 toDo++;
-            } else if (tasks.get(i).getStatus().equals("Doing")) {
+            } else if (task.getStatus().equals("Doing")) {
                 doing++;
             } else {
                 done++;
@@ -137,9 +138,9 @@ public class TasksLists {
             System.out.println("\nNão existe tarefas!\n");
             return;
         }
-        Collections.sort(tasks, new TaskCompareCategoria());
-        for (int i = 0; i < tasks.size(); i++) {
-            System.out.println(tasks.get(i));
+        tasks.sort(new TaskCompareCategoria());
+        for (Task task : tasks) {
+            System.out.println(task);
         }
         System.out.println();
     }
@@ -162,9 +163,9 @@ public class TasksLists {
             System.out.println("\nNão existe tarefas!\n");
             return;
         }
-        Collections.sort(tasks, new TaskCompareStatus());
-        for (int i = 0; i < tasks.size(); i++) {
-            System.out.println(tasks.get(i));
+        tasks.sort(new TaskCompareStatus());
+        for (Task task : tasks) {
+            System.out.println(task);
         }
 
         System.out.println();
@@ -176,10 +177,10 @@ public class TasksLists {
             return;
         }
 
-        Collections.sort(tasks, new TaskCompareData());
+        tasks.sort(new TaskCompareData());
 
-        for (int i = 0; i < tasks.size(); i++) {
-            System.out.println(tasks.get(i));
+        for (Task task : tasks) {
+            System.out.println(task);
         }
         System.out.println();
     }

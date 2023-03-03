@@ -1,6 +1,7 @@
+package com.igor.todolist;
+
 import java.io.*;
 import java.util.List;
-
 public class TasksTxt {
     public static void readTasks(List<Task> tasks) {
 
@@ -16,8 +17,6 @@ public class TasksTxt {
                 line = bufferedReader.readLine();
             }
 
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -28,13 +27,13 @@ public class TasksTxt {
         try (FileWriter fileWriter = new FileWriter("./src/myTasks.txt");
              PrintWriter printWrite = new PrintWriter(fileWriter)) {
 
-            for (int i = 0; i < tasks.size(); i++) {
-                printWrite.println(tasks.get(i).getNome() + ";"
-                + tasks.get(i).getDescricao() + ";"
-                + FormatterDate.date_for_string(tasks.get(i).getData_termino()) + ";"
-                + tasks.get(i).getNivel_prioridade() + ";"
-                + tasks.get(i).getCategoria() + ";"
-                + tasks.get(i).getStatus() + ";");
+            for (Task task : tasks) {
+                printWrite.println(task.getNome() + ";"
+                        + task.getDescricao() + ";"
+                        + FormatterDate.date_for_string(task.getData_termino()) + ";"
+                        + task.getNivel_prioridade() + ";"
+                        + task.getCategoria() + ";"
+                        + task.getStatus() + ";");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
