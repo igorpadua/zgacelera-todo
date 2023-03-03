@@ -88,6 +88,12 @@ public class TasksLists {
 
     }
 
+    // Refatoração do método deletar
+
+    static void deletaTarefa(List<Task> tasks, int id) {
+        tasks.remove(id);
+    }
+
     public static void deleteTask(List<Task> tasks) {
         Scanner sc = new Scanner(System.in);
 
@@ -106,7 +112,7 @@ public class TasksLists {
             System.out.println("\nTarefa não removida!\n");
             return;
         }
-        tasks.remove(temp);
+        deletaTarefa(tasks, temp);
         System.out.println("\nTarefa removida!\n");
     }
 
