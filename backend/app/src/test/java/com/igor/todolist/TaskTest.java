@@ -17,4 +17,12 @@ public class TaskTest {
         TasksLists.deletaTarefa(tasks, 0);
         Assertions.assertEquals(0, tasks.size());
     }
+
+    @Test
+    public void adicionarTarefa() {
+        Task task = new Task("Tarefa 1", "Descrição da tarefa 1", new Date(), (short) 1, "Categoria 1", "ToDo");
+        Task result = new Task("Tarefa 1", "Descrição da tarefa 1", new Date(), (short) 1, "Categoria 1", "ToDo");
+
+        Assertions.assertEquals(result, task);
+    }
 }

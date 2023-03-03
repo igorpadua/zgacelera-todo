@@ -32,6 +32,21 @@ public class Task implements Comparable<Task> {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Task task = (Task) o;
+
+        if (nivel_prioridade != task.nivel_prioridade) return false;
+        if (!Objects.equals(nome, task.nome)) return false;
+        if (!Objects.equals(descricao, task.descricao)) return false;
+        if (!Objects.equals(data_termino, task.data_termino)) return false;
+        if (!Objects.equals(categoria, task.categoria)) return false;
+        return Objects.equals(status, task.status);
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(nivel_prioridade);
     }
