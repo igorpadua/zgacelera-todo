@@ -25,44 +25,51 @@ public class App {
             System.out.println("Escolha uma opção do menu:");
             int opc = sc.nextInt();
             switch (opc) {
-                case 1 -> {
+                case 1:
                     // Criando uma tarefa
                     tasks.add(TasksLists.newTask());
                     System.out.println("\nTarefa adicionado com sucesso!\n");
                     Collections.sort(tasks);
-                }
-                case 2 ->
+                    break;
+                case 2:
                     // Listar tarefas por prioridade
-                        TasksLists.taskListPriority(tasks);
-                case 3 ->
+                    TasksLists.taskListPriority(tasks);
+                    break;
+                case 3:
                     // Listar tarefas por categoria
-                        TasksLists.taskListCategoria(tasks);
-                case 4 ->
+                    TasksLists.taskListCategoria(tasks);
+                    break;
+                case 4:
                     // Listar tarefa por status
-                        TasksLists.taskListStatus(tasks);
-                case 5 ->
+                    TasksLists.taskListStatus(tasks);
+                    break;
+                case 5:
                     // Listar tarefa por data de termino
-                        TasksLists.taskListData(tasks);
-                case 6 ->
+                    TasksLists.taskListData(tasks);
+                    break;
+                case 6:
                     // Verificar número de tarefas concluidas, estão para fazer e sendo feitas
-                        System.out.println(TasksLists.tasksTodoDoingDone(tasks));
-                case 7 -> {
+                    System.out.println(TasksLists.tasksTodoDoingDone(tasks));
+                    break;
+                case 7:
                     // Modificar uma tarefa
                     Collections.sort(tasks);
                     TasksLists.modifyTask(tasks);
-                }
-                case 8 -> {
+                    break;
+                case 8:
                     // Remover uma tarefa
                     Collections.sort(tasks);
                     TasksLists.deleteTask(tasks);
-                }
-                case 9 -> {
+                    break;
+
+                case 9:
                     // Sair do programa
                     System.out.println("Programa finalizado!");
                     TasksTxt.writeTasks(tasks);
                     end = false;
-                }
-                default -> System.out.println("Comando incorreto!");
+                    break;
+
+                default: System.out.println("Comando incorreto!");
             }
         }
         sc.close();

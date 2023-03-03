@@ -6,24 +6,24 @@ O programa é um simples ToDo-List
 
 # Como executar
 
-No terminal:
-É necessário mudar a classe TasksTxt.java na linha 8 e 28 trocando "./src/myTasks.txt" para "myTasks.txt"
-> javac Main.java Task.java TasksLists.java TasksTxt.java FormatterDate.java
-> java Main
-
-Intellij Idea:
-> File->open->pasta_exemplo/zgaceleratodo
-> Em seguida ir no main é apertar o botão de executar
+## Frontend
+> Execute o arquivo index.html com a extensão do vscode live server ou semelhante.
+> 
+## Backend
+> gradle run
 
 # Tecnologias presente
 
+## Frontend
 * Html
 * JavaScrip
 * CSS
+
+## Backend
 * Java
 
 # Funcionalidades
 
-1. Ordernar por status, prioridade, categoria e data de termino
+1. Ordernar por status, prioridade, categoria e data de término
 2. Persistencia de dados com txt
 3. Adicionar/modifica/remover
