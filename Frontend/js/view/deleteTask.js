@@ -1,4 +1,5 @@
 const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
+console.log(taskList)
 
 function deleteTask(index) {
 	taskList.splice(index, 1);

@@ -1,4 +1,5 @@
-let taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
+const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
+console.log(taskList)
 
 function criaTabelaTask(task, i) {
 	let lista = "<tr>"

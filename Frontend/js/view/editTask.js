@@ -1,4 +1,4 @@
-import {criaTask} from "./criaTask.js";
+import {cadastro} from "./Cadastro.js";
 
 const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
 const input = document.getElementById("idTask");
@@ -51,7 +51,7 @@ document.getElementById("btnEdit").onclick = function() {
 
 document.getElementById("taskSubmit").onclick = function() {
 	console.log("Edit task");
-	const task = criaTask()
+	const task = cadastro()
 	// Adicionar a tarefa à lista de tarefas
 	if (!(task.name && task.description && task.date && task.priority && task.categoria && task.status !== "Selecione")) {
 		alert("Preencha todos os campos!");
