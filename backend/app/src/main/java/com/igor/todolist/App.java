@@ -3,21 +3,21 @@
  */
 package com.igor.todolist;
 
+import com.igor.todolist.controller.TaskController;
+import com.igor.todolist.dao.TasksDAO;
+import com.igor.todolist.model.Task;
+import com.igor.todolist.view.TaskView;
+
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
     public static void main(String[] args) {
 
         boolean end = true;
         ArrayList<Task> tasks = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
-        TasksTxt.readTasks(tasks);
+        TasksDAO.readTasks(tasks);
 
         menu();
 
@@ -25,51 +25,37 @@ public class App {
             System.out.println("Escolha uma opção do menu:");
             int opc = sc.nextInt();
             switch (opc) {
-                case 1:
+                case 1 ->
                     // Criando uma tarefa
-                    tasks.add(TasksLists.newTask());
-                    System.out.println("\nTarefa adicionado com sucesso!\n");
-                    Collections.sort(tasks);
-                    break;
-                case 2:
+                        tasks.add(TaskController.criarTarefa());
+                case 2 ->
                     // Listar tarefas por prioridade
-                    TasksLists.taskListPriority(tasks);
-                    break;
-                case 3:
+                        TaskView.listaPorPrioridade(tasks);
+                case 3 ->
                     // Listar tarefas por categoria
-                    TasksLists.taskListCategoria(tasks);
-                    break;
-                case 4:
+                        TaskView.listaPorCategoria(tasks);
+                case 4 ->
                     // Listar tarefa por status
-                    TasksLists.taskListStatus(tasks);
-                    break;
-                case 5:
+                        TaskView.listarPorStatus(tasks);
+                case 5 ->
                     // Listar tarefa por data de termino
-                    TasksLists.taskListData(tasks);
-                    break;
-                case 6:
+                        TaskView.listarPorData(tasks);
+                case 6 ->
                     // Verificar número de tarefas concluidas, estão para fazer e sendo feitas
-                    System.out.println(TasksLists.tasksTodoDoingDone(tasks));
-                    break;
-                case 7:
+                        System.out.println(TaskView.contaTarefas(tasks));
+                case 7 ->
                     // Modificar uma tarefa
-                    Collections.sort(tasks);
-                    TasksLists.modifyTask(tasks);
-                    break;
-                case 8:
+                        TaskController.atualizarTarefa(tasks);
+                case 8 ->
                     // Remover uma tarefa
-                    Collections.sort(tasks);
-                    TasksLists.deleteTask(tasks);
-                    break;
-
-                case 9:
+                        TaskController.excluirTarefa(tasks);
+                case 9 -> {
                     // Sair do programa
                     System.out.println("Programa finalizado!");
-                    TasksTxt.writeTasks(tasks);
+                    TasksDAO.writeTasks(tasks);
                     end = false;
-                    break;
-
-                default: System.out.println("Comando incorreto!");
+                }
+                default -> System.out.println("Comando incorreto!");
             }
         }
         sc.close();

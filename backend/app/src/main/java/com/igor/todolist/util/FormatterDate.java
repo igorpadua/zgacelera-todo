@@ -1,4 +1,4 @@
-package com.igor.todolist;
+package com.igor.todolist.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -7,14 +7,14 @@ import java.util.Date;
 public class FormatterDate {
     public static Date string_for_date(String tempTerm) {
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        Date term = null;
+        Date data_termino = new Date();
         try {
-            term = formatter.parse(tempTerm);
+            data_termino = formatter.parse(tempTerm);
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
-        return term;
+        return data_termino;
     }
 
     public static String date_for_string(Date date) {

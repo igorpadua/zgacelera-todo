@@ -1,6 +1,7 @@
-package com.igor.todolist;
+package com.igor.todolist.model;
 
-import java.util.Comparator;
+import com.igor.todolist.util.FormatterDate;
+
 import java.util.Date;
 import java.util.Objects;
 
@@ -111,25 +112,5 @@ public class Task implements Comparable<Task> {
 
     public int compareCategoria(Task task, Task t1) {
         return task.getCategoria().compareTo(t1.getCategoria());
-    }
-}
-class TaskCompareData implements Comparator<Task> {
-    @Override
-    public int compare(Task task, Task t1) {
-        return task.getData_termino().compareTo(t1.getData_termino());
-    }
-}
-
-class TaskCompareCategoria implements Comparator<Task> {
-    @Override
-    public int compare(Task task, Task t1) {
-        return task.getCategoria().compareTo(t1.getCategoria());
-    }
-}
-
-class TaskCompareStatus implements Comparator<Task> {
-    @Override
-    public int compare(Task task, Task t1) {
-        return task.getStatus().compareTo(t1.getStatus());
     }
 }
