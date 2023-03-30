@@ -1,35 +1,40 @@
 import {cadastro} from "./Cadastro.js";
+import validaId from "../util/ValidaId.js";
 
 const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
-const input = document.getElementById("idTask");
+let id
 
 document.getElementById("btnEdit").onclick = function() {
-	document.getElementById("idLabel").style.display = "none";
-	document.getElementById("idTask").style.display = "none";
-	document.getElementById("btnEdit").style.display = "none";
+	try {
+		escodeDigiteId()
 
-	console.log(input)
+		id = validaId(taskList)
 
-	if (taskList.length === 0) {
-		alert("Não há tarefas cadastradas!");
+		mostraEdit()
+
+		const task = taskList[id]
+
+		insereElementosTask(task)
+	} catch (error) {
+		alert(error.message)
+		mostraDigiteId()
+	}
+
+}
+
+document.getElementById("taskSubmit").onclick = function() {
+	const task = cadastro()
+	if (!(task.name && task.description && task.date && task.priority && task.categoria && task.status !== "Selecione")) {
+		alert("Preencha todos os campos!");
 		return;
 	}
+	taskList[id] = task;
+	window.localStorage.setItem("taskList", JSON.stringify(taskList));
+	alert("Tarefa editada com sucesso!");
+	escondeEdit();
+}
 
-	if (input.value === "") {
-		alert("Informe o ID da tarefa que deseja editar!");
-		return
-	}
-
-	if (input.value >= taskList.length) {
-		alert("Tarefa não encontrada!");
-		return;
-	}
-
-	document.getElementById("form-esconder").style.display = "block";
-	document.getElementById("taskSubmit").style.display = "block";
-
-	const task = taskList[input.value];
-
+function insereElementosTask(task) {
 	document.getElementById("taskName").value = task.name;
 	document.getElementById("taskDescription").value = task.description;
 	// Formatando Data
@@ -49,17 +54,24 @@ document.getElementById("btnEdit").onclick = function() {
 	}
 }
 
-document.getElementById("taskSubmit").onclick = function() {
-	console.log("Edit task");
-	const task = cadastro()
-	// Adicionar a tarefa à lista de tarefas
-	if (!(task.name && task.description && task.date && task.priority && task.categoria && task.status !== "Selecione")) {
-		alert("Preencha todos os campos!");
-		return;
-	}
-	taskList[input.value] = task;
-	window.localStorage.setItem("taskList", JSON.stringify(taskList));
-	alert("Tarefa editada com sucesso!");
+function escodeDigiteId() {
+	document.getElementById("idLabel").style.display = "none";
+	document.getElementById("idTask").style.display = "none";
+	document.getElementById("btnEdit").style.display = "none";
+}
+
+function mostraDigiteId() {
+	document.getElementById("idLabel").style.display = "block";
+	document.getElementById("idTask").style.display = "block";
+	document.getElementById("btnEdit").style.display = "block";
+}
+
+function mostraEdit() {
+	document.getElementById("form-esconder").style.display = "block";
+	document.getElementById("taskSubmit").style.display = "block";
+}
+
+function escondeEdit() {
 	document.getElementById("idLabel").style.display = "block";
 	document.getElementById("idTask").style.display = "block";
 	document.getElementById("btnEdit").style.display = "block";

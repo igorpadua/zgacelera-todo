@@ -1,5 +1,6 @@
+import ValidaId from "../util/ValidaId.js";
+
 const taskList = JSON.parse(window.localStorage.getItem("taskList")) || [];
-console.log(taskList)
 
 function deleteTask(index) {
 	taskList.splice(index, 1);
@@ -8,19 +9,12 @@ function deleteTask(index) {
 }
 
 document.getElementById("btnDelete").onclick = function() {
-
-	if (taskList.length === 0) {
-		alert("Não há tarefas cadastradas!");
-		return;
+	try {
+		const id = ValidaId(taskList)
+		deleteTask(id);
+		alert("Tarefa deletada com sucesso!");
+	} catch (error) {
+		alert(error.message)
 	}
-
-	const input = document.getElementById("idTask");
-
-	if (input.value === "") {
-		alert("Informe o ID da tarefa que deseja deletar!");
-		return
-	}
-	deleteTask(input.value);
-	alert("Tarefa deletada com sucesso!");
 }
 

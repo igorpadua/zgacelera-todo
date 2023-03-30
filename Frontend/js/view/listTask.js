@@ -21,7 +21,8 @@ function listTasks() {
 		alert("Nenhuma tarefa cadastrada!");
 		return ""
 	}
-	let lista = "<tr><th>Id</th><th>Nome</th><th>Descrição</th><th>Data</th><th>Prioridade</th><th>Categoria</th><th>Status</th></tr>"
+	let lista = "<tr><th>Id</th><th>Nome</th><th>Descrição</th><th>Data</th>" +
+		"<th>Prioridade</th><th>Categoria</th><th>Status</th></tr>"
 	for (let i = 0; i < taskList.length; i++) {
 		lista += criaTabelaTask(taskList[i], i)
 	}
@@ -39,7 +40,8 @@ function odernarStatus(status) {
 		alert("Nenhuma tarefa cadastrada!");
 		return
 	}
-	lista = "<tr><th>Id</th><th>Nome</th><th>Descrição</th><th>Data</th><th>Prioridade</th><th>Categoria</th><th>Status</th></tr>"
+	lista = "<tr><th>Id</th><th>Nome</th><th>Descrição</th><th>Data</th><th>Prioridade</th>" +
+		"<th>Categoria</th><th>Status</th></tr>"
 	for (let i = 0; i < taskList.length; i++) {
 		if (taskList[i].status === status) {
 			lista += criaTabelaTask(taskList[i], i)
