@@ -112,48 +112,13 @@ public class TaskView {
         return "ToDo: " + todo + " Doing: " + doing + " Done: " + done;
     }
 
-    public static void listaPorCategoria(List<Task> tasks) {
+    public static void listarTarefas(List<Task> tasks, Comparator<Task> comparator) {
         if (tasks.isEmpty()) {
             listaVazia();
             return;
         }
-        tasks.sort(Comparator.comparing(Task::getCategoria));
 
-        for (Task task : tasks) {
-            System.out.println(task);
-        }
-    }
-
-    public static void listaPorPrioridade(List<Task> tasks) {
-        if (tasks.isEmpty()) {
-            listaVazia();
-            return;
-        }
-        tasks.sort(Comparator.comparingInt(Task::getNivel_prioridade));
-
-        for (Task task : tasks) {
-            System.out.println(task);
-        }
-    }
-
-    public static void listarPorStatus(List<Task> tasks) {
-        if (tasks.isEmpty()) {
-            listaVazia();
-            return;
-        }
-        tasks.sort(Comparator.comparing(Task::getStatus));
-
-        for (Task task : tasks) {
-            System.out.println(task);
-        }
-    }
-
-    public static void listarPorData(List<Task> tasks) {
-        if (tasks.isEmpty()) {
-            listaVazia();
-            return;
-        }
-        tasks.sort(Comparator.comparing(Task::getData_termino));
+        tasks.sort(comparator);
 
         for (Task task : tasks) {
             System.out.println(task);

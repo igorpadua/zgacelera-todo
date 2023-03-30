@@ -9,6 +9,7 @@ import com.igor.todolist.model.Task;
 import com.igor.todolist.view.TaskView;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class App {
@@ -30,16 +31,16 @@ public class App {
                         tasks.add(TaskController.criarTarefa());
                 case 2 ->
                     // Listar tarefas por prioridade
-                        TaskView.listaPorPrioridade(tasks);
+                        TaskView.listarTarefas(tasks, Comparator.comparing(Task::getNivel_prioridade));
                 case 3 ->
                     // Listar tarefas por categoria
-                        TaskView.listaPorCategoria(tasks);
+                        TaskView.listarTarefas(tasks, Comparator.comparing(Task::getCategoria));
                 case 4 ->
                     // Listar tarefa por status
-                        TaskView.listarPorStatus(tasks);
+                        TaskView.listarTarefas(tasks, Comparator.comparing(Task::getStatus));
                 case 5 ->
                     // Listar tarefa por data de termino
-                        TaskView.listarPorData(tasks);
+                        TaskView.listarTarefas(tasks, Comparator.comparing(Task::getData_termino));
                 case 6 ->
                     // Verificar número de tarefas concluidas, estão para fazer e sendo feitas
                         System.out.println(TaskView.contaTarefas(tasks));
